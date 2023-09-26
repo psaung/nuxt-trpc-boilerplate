@@ -1,15 +1,11 @@
 import { inferAsyncReturnType } from '@trpc/server';
 import { H3Event } from 'h3';
 
-export interface CreateContextOption extends H3Event {
-  session?: any;
-}
-
 /**
  * Creates context for an incoming request
  * @link https://trpc.io/docs/context
  */
-export const createContext = (opts: CreateContextOption) => {
+export const createContext = (opts: H3Event) => {
   return opts;
 };
 

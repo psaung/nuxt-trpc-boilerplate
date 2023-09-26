@@ -1,6 +1,37 @@
-# Nuxt 3 Minimal Starter
+# Nuxt TRPC Boilerplate 
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+## What's all about
+
+Boilerplate for NuxtJs with TRPC. Authentication and middlewares are referenced from [Nuxt3 Auth Example](https://github.com/damien-hl/nuxt3-auth-example). All of the technologies used in this repository are the followings.
+
+- [Bun](https://bun.sh/)
+- [Vue3](https://vuejs.org/)
+- [Vue-i18n](https://kazupon.github.io/vue-i18n/)
+- [Nuxt3](https://nuxt.com/)
+- [TRPC](https://trpc.io/)
+- [Prisma](https://www.prisma.io/)
+- [VueX](https://vuex.vuejs.org/)
+- [Tailwinds](https://tailwindcss.com/)
+
+Folder Structures 
+============================
+
+    .
+    ├── composables             # Vue Composables 
+    ├── middleware              # Middleare supposed to handle routing mechanism
+    ├── pages                   # Page Level Components 
+    │   ├── admin               # Admin Routes 
+    │   ├── app                 # Authenticated based Routes 
+    │   ├── login.vue           # Login Page 
+    │   ├── register.vue        # Register Page 
+    ├── plugins                 # Compiled files (alternatively `dist`)
+    ├── prisma                  # Documentation files (alternatively `doc`)
+    ├── public                  # Store static assets 
+    ├── server                  # Server related stuff
+    ├── src                     # Src and utilities
+    │   ├── locale              # Locale folder 
+    ├── store                   # Vuex store 
+    └── README.md
 
 ## Setup
 
