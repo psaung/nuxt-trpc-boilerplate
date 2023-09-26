@@ -5,5 +5,5 @@
 <script setup lang="ts">
 const { $client } = useNuxtApp();
 
-const response = await $client.hello.query({ text: 'KbLab' });
+const response = await $client.config.hello.query({ text: 'Nuxt Boilerplate' });
 </script>

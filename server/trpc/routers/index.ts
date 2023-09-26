@@ -1,24 +1,9 @@
-import { z } from 'zod';
-import { protectedProcedure, publicProcedure, router } from '../trpc';
+import { router } from '../trpc';
 import { authRouter } from './auth';
+import { configRouter } from './config';
 
 export const appRouter = router({
-  hello: publicProcedure
-    .input(
-      z.object({
-        text: z.string().nullish(),
-      })
-    )
-    .query(({ input }) => {
-      return {
-        greeting: `hello ${input?.text ?? 'world'}`,
-      };
-    }),
-  test: protectedProcedure.query(() => {
-    return {
-      greeting: `hello`,
-    };
-  }),
+  config: configRouter,
   auth: authRouter,
 });
 

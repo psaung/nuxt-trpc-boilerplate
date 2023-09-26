@@ -8,13 +8,13 @@ export default defineNuxtConfig({
   modules: ['@nuxtjs/tailwindcss'],
   app: {
     head: {
-      title: 'KbLab Marketplace',
+      title: 'Nuxt Boilerplate',
       meta: [
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         {
           hid: 'description',
           name: 'description',
-          content: 'Kblab Marketplace boilerplate',
+          content: 'Nuxt Boilerplate',
         },
       ],
     },

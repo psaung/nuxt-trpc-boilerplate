@@ -13,7 +13,7 @@ Boilerplate for NuxtJs with TRPC. Authentication and middlewares are referenced 
 - [VueX](https://vuex.vuejs.org/)
 - [Tailwinds](https://tailwindcss.com/)
 
-Folder Structures 
+## Folder Structures 
 ============================
 
     .

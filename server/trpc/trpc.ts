@@ -27,9 +27,26 @@ const enforceUserIsAuthed = t.middleware(({ ctx, next }) => {
   return next({
     ctx: {
       // infers the `session` as non-nullable
-      session: { user: ctx.context.user.userId },
+      session: { user: ctx.context.user },
+    },
+  });
+});
+
+const enforceAdmin = t.middleware(({ ctx, next }) => {
+  if (
+    !ctx.context ||
+    !ctx.context?.user?.userId ||
+    ctx.context?.user?.role !== 'Admin'
+  ) {
+    throw new TRPCError({ code: 'UNAUTHORIZED' });
+  }
+  return next({
+    ctx: {
+      // infers the `session` as non-nullable
+      session: { user: ctx.context.user },
     },
   });
 });
 
 export const protectedProcedure = t.procedure.use(enforceUserIsAuthed);
+export const adminProtectedProcedure = t.procedure.use(enforceAdmin);

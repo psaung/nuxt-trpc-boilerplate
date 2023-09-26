@@ -1,44 +1,27 @@
 <template>
-  <div className="relative max-h-screen overflow-y-auto">
-    {{ error }}
-    <form @submit.prevent="handleLogin">
-      <div>
-        <label for="email">Email</label>
-        <input type="email" id="email" v-model="formValues.email" />
+  <div class="relative max-h-screen overflow-y-auto">
+    <div class="flex w-full justify-center py-24 flex-col">
+      <div class="flex flex-row items-center mb-5">
+        <h1 class="text-xl text-center w-full">Sign In</h1>
       </div>
-      <div>
-        <label for="password">Password</label>
-        <input type="password" id="password" v-model="formValues.password" />
-      </div>
-      <div>
-        <input type="submit" value="Submit" />
-      </div>
-    </form>
-
-    <div @click="handleLogout">Logout</div>
+      <LoginForm :on-submit="handleLogin" />
+      <div class="text-red-600 my-2 text-center">{{ error }}</div>
+    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-const { login, logout } = useAuth();
+import type { loginProps } from '~/utils/types/app';
+
+const { login } = useAuth();
 
 const error = ref('');
 
-const formValues = ref<{
-  password: string;
-  email: string;
-  rememberMe?: boolean;
-}>({
-  password: '',
-  email: '',
-  rememberMe: false,
-});
-const handleLogin = async () => {
+const handleLogin = async (value: loginProps) => {
   error.value = '';
-  const response = await login(
-    formValues.value.email,
-    formValues.value.password
-  );
+  const response = await login(value.email, value.password);
+  console.log(value);
+
   if (!response.user) {
     error.value = response.message;
     return;
@@ -48,9 +31,5 @@ const handleLogin = async () => {
     return;
   }
   navigateTo('/app');
-};
-
-const handleLogout = async () => {
-  await logout();
 };
 </script>

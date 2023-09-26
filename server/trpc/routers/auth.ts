@@ -112,7 +112,7 @@ export const authRouter = router({
       }
 
       const config = useRuntimeConfig();
-      const session = serialize({ userId: user.id });
+      const session = serialize({ userId: user.id, role: user.role });
       const signedSession = sign(session, config.cookieSecret);
 
       setCookie(ctx, config.cookieName, signedSession, {
