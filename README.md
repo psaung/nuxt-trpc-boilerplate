@@ -33,9 +33,19 @@ Boilerplate for NuxtJs with TRPC. Authentication and middlewares are referenced 
     ├── store                   # Vuex store 
     └── README.md
 
+
+
 ## Setup
 
 Make sure to install the dependencies:
+
+```bash
+
+# migrate prisma db
+npx prisma migrate dev
+
+node prisma/seed.js
+```
 
 ```bash
 # npm
