@@ -4,6 +4,7 @@ const prisma = new PrismaClient();
 
 const load = async () => {
   try {
+    const pwd = await bcrypt.hash('123', 10);
     const admin = await prisma.user.upsert({
       where: { email: 'admin@gmail.com' },
       update: {},
@@ -12,7 +13,7 @@ const load = async () => {
         firstName: 'Admin',
         lastName: 'Admin',
         phone: '0999999999',
-        password: bcrypt.hash('123', 10),
+        password: pwd,
         role: 'Admin',
         address: 'somewhere',
       },
@@ -26,7 +27,7 @@ const load = async () => {
         firstName: 'User',
         lastName: 'User',
         phone: '0999999991',
-        password: bcrypt.hash('123', 10),
+        password: pwd,
         role: 'User',
         address: 'somewhere 123',
       },
