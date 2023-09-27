@@ -4,9 +4,10 @@ const prisma = new PrismaClient();
 
 const load = async () => {
   try {
-    await prisma.user.deleteMany();
-    const admin = await prisma.user.create({
-      data: {
+    const admin = await prisma.user.upsert({
+      where: { email: 'admin@gmail.com' },
+      update: {},
+      create: {
         email: 'admin@gmail.com',
         firstName: 'Admin',
         lastName: 'Admin',
@@ -17,8 +18,10 @@ const load = async () => {
       },
     });
 
-    const user = await prisma.user.create({
-      data: {
+    const user = await prisma.user.upsert({
+      where: { email: 'user@gmail.com' },
+      update: {},
+      create: {
         email: 'user@gmail.com',
         firstName: 'User',
         lastName: 'User',
