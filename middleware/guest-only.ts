@@ -1,9 +1,10 @@
 export default defineNuxtRouteMiddleware(async () => {
   const user = useAuthUser();
 
-  if (user.value) {
-    if (process.server) return navigateTo({ name: 'index' });
-
-    return abortNavigation();
+  switch (user?.value?.role) {
+    case 'Admin':
+      return navigateTo({ name: 'admin' });
+    case 'User':
+      return navigateTo({ name: 'app' });
   }
 });
