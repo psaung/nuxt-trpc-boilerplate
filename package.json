@@ -8,7 +8,7 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "seed": "ts-node prisma/seed.ts",
-    "postinstall": "nuxt prepare && prisma generate && node prisma/seed.js"
+    "postinstall": "nuxt prepare && prisma generate"
   },
   "prisma": {
     "seed": "node prisma/seed.js"
